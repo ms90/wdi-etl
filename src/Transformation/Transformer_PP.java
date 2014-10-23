@@ -46,66 +46,66 @@ public class Transformer_PP {
 	        		String[] s0 = line.split("<d");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<description>" + s2[0] + "</description>";
+	        		input += s0[0] + "<description>" + s2[0] + "</description>" + '\n';
 //	        		System.err.println(s0[0] + "<description>" + s2[0] + "</description>");
 	        	} else if (line.matches(".*<release>.+</literal>.*")) {
 	        		String[] s0 = line.split("<r");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<release>" + s2[0] + "</release>";
+	        		input += s0[0] + "<release>" + s2[0] + "</release>" + '\n';
 //	        		System.err.println(s0[0] + "<release>" + s2[0] + "</release>");
 	        	} else if (line.matches(".*<platform>.+</literal>.*")) {
 	        		String[] s0 = line.split("<p");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<platform>" + s2[0] + "</platform>";
+	        		input += s0[0] + "<platform>" + s2[0] + "</platform>" + '\n';
 //	        		System.err.println(s0[0] + "<platform>" + s2[0] + "</platform>");
 	        	} else if (line.matches(".*<developer>.+</literal>.*")) {
 	        		String[] s0 = line.split("<d");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<developer>" + s2[0] + "</developer>";
+	        		input += s0[0] + "<developer>" + s2[0] + "</developer>" + '\n';
 //	        		System.err.println(s0[0] + "<developer>" + s2[0] + "</developer>");
 	        	} else if (line.matches(".*<genid>.+</literal>.*")) {
 	        		String[] s0 = line.split("<g");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<genid>" + s2[0] + "</genid>";
+	        		input += s0[0] + "<genid>" + s2[0] + "</genid>" + '\n';
 //	        		System.err.println(s0[0] + "<genid>" + s2[0] + "</genid>");
 	        	} else if (line.matches(".*<genre>.+</literal>.*")) {
 	        		String[] s0 = line.split("<g");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<genre>" + s2[0] + "</genre>";
+	        		input += s0[0] + "<genre>" + s2[0] + "</genre>" + '\n';
 //	        		System.err.println(s0[0] + "<genre>" + s2[0] + "</genre>");
 	        	} else if (line.matches(".*<gendesc>.+</literal>.*")) {
 	        		String[] s0 = line.split("<g");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<gendesc>" + s2[0] + "</gendesc>";
+	        		input += s0[0] + "<gendesc>" + s2[0] + "</gendesc>" + '\n';
 //	        		System.err.println(s0[0] + "<gendesc>" + s2[0] + "</gendesc>");
 	        	} else if (line.matches(".*<publisher>.+</literal>.*")) {
 	        		String[] s0 = line.split("<p");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<publisher>" + s2[0] + "</publisher>";
+	        		input += s0[0] + "<publisher>" + s2[0] + "</publisher>" + '\n';
 //	        		System.err.println(s0[0] + "<publisher>" + s2[0] + "</publisher>");
 	        	} else if (line.matches(".*<modes>.+</literal>.*")) {
 	        		String[] s0 = line.split("<m");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<modes>" + s2[0] + "</modes>";
+	        		input += s0[0] + "<modes>" + s2[0] + "</modes>" + '\n';
 //	        		System.err.println(s0[0] + "<modes>" + s2[0] + "</modes>");
 	        	} else if (line.matches(".*<computingmedia>.+</literal>.*")) {
 	        		String[] s0 = line.split("<c");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<computingmedia>" + s2[0] + "</computingmedia>";
+	        		input += s0[0] + "<computingmedia>" + s2[0] + "</computingmedia>" + '\n';
 //	        		System.err.println(s0[0] + "<computingmedia>" + s2[0] + "</computingmedia>");
 	        	} else if (line.matches(".*</binding>.*")) continue;
 	        	else {
 //	        		System.err.println(line);
-	        		input += line;
+	        		input += line + '\n';
 	        	}
 		        fos.write(input.getBytes());
 	        	lineNumber += 1;
