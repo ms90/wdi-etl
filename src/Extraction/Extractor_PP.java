@@ -15,21 +15,35 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFormatter;
 
 
-public class Extractor {
+public class Extractor_PP {
 	
-	static ArrayList<String> ids = new ArrayList<>();
-
-	public static void main (String args[]) {
-		try {
-			run();
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
+	static class ExThread implements Runnable {
+		int i = 0;
+		
+		public ExThread(int i) {
+			this.i = i;
+		}
+		
+		@Override
+		public void run() {
+			try {
+				exec(getIds(i), i);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	private static void query(String id) throws IOException {
+	public static void main(String[] args){
+	    for(int i=0; i<20; i++){
+	    	ExThread t = new ExThread(i);
+	    	new Thread(t).start();
+	    }
+	  }
+
+	private static void query(String id, int j) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    	String fileName = "Resources/output.txt";
+    	String fileName = "Resources/" + j + "_out.txt";
     	FileWriter fw = new FileWriter(fileName, true);
 		
 		String queryString = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
@@ -79,21 +93,22 @@ public class Extractor {
 		qexec.close();
 	}
 
-	private static void run() throws IOException {
-		getIds();
+	private static void exec(ArrayList<String> ids, int j) throws IOException {
 		for (int i=0; i<ids.size(); i++) {
-			System.out.println("Processing " + (i+1) + "/" + ids.size() + " ID: " + ids.get(i));
+			System.out.println(Thread.currentThread().getName() + " --> Processing " + (i+1) + "/" + ids.size() + " ID: " + ids.get(i));
 			try {
-				query(ids.get(i));
+				query(ids.get(i), j);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
+				System.out.println("--------------------------------------------------------------------------------");
 			}
 		}
 	}
 	
-	private static void getIds() {
+	private static ArrayList<String> getIds(int i) {
+		ArrayList<String> ids = new ArrayList<String>();
 		try {
-			FileReader fr = new FileReader("Resources/ids.txt");
+			FileReader fr = new FileReader("Resources/" + i + ".txt");
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			
@@ -107,6 +122,7 @@ public class Extractor {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return ids;
 	}
 }
 
