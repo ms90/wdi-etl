@@ -12,8 +12,8 @@ public class Transformer {
 	}
 	
 	public static void run() throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("Resources/dbpedia_clean.txt"));
-        FileOutputStream fos = new FileOutputStream("Resources/dbpedia_clean_new.txt");
+		BufferedReader br = new BufferedReader(new FileReader("Resources/dbpedia.txt"));
+        FileOutputStream fos = new FileOutputStream("Resources/dbpedia_clean.txt");
         String line;
         String input = "";
         int lineNumber = 1;
@@ -21,7 +21,13 @@ public class Transformer {
 	    try {
 	        while ((line = br.readLine()) != null) {
 	        	System.out.println(lineNumber);
-	        	if (line.matches(".*<description>.+</literal>.*")) {
+	        	if (line.matches(".*<id>.+</id>.*")) {
+	        		String[] s0 = line.split("<i");
+	        		String[] s1 = line.split(">");
+	        		String[] s2 = s1[1].split("</");
+	        		input += s0[0] + "<id>" + s2[0] + "</id>";
+	        		System.err.println(s0[0] + "<id>" + s2[0] + "</id>");
+	        	} else if (line.matches(".*<description>.+</literal>.*")) {
 	        		String[] s0 = line.split("<d");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");

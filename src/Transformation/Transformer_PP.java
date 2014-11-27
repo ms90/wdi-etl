@@ -42,7 +42,13 @@ public class Transformer_PP {
 	    try {
 	        while ((line = br.readLine()) != null) {
 	        	System.out.println("Thread: " + Thread.currentThread().getName() + " Line: " + lineNumber);
-	        	if (line.matches(".*<description>.+</literal>.*")) {
+	        	if (line.matches(".*<id>.+</id>.*")) {
+	        		String[] s0 = line.split("<i");
+	        		String[] s1 = line.split(">");
+	        		String[] s2 = s1[1].split("</");
+	        		input += s0[0] + "<id>" + s2[0] + "</id>";
+	        		System.err.println(s0[0] + "<id>" + s2[0] + "</id>");
+	        	} else if (line.matches(".*<description>.+</literal>.*")) {
 	        		String[] s0 = line.split("<d");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
