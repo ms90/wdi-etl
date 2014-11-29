@@ -1,4 +1,4 @@
-package Transformation;
+package wdi.transformation;
 
 public class VideoGame {
 	

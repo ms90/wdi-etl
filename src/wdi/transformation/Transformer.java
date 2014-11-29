@@ -1,4 +1,4 @@
-package Transformation;
+package wdi.transformation;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -12,8 +12,8 @@ public class Transformer {
 	}
 	
 	public static void run() throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("Resources/dbpedia.txt"));
-        FileOutputStream fos = new FileOutputStream("Resources/dbpedia_clean.txt");
+		BufferedReader br = new BufferedReader(new FileReader("resources/dbpedia.txt"));
+        FileOutputStream fos = new FileOutputStream("resources/dbpedia_clean.txt");
         String line;
         String input = "";
         int lineNumber = 1;

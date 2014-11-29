@@ -1,4 +1,4 @@
-package Transformation;
+package wdi.transformation;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -33,8 +33,8 @@ public class Transformer_PP {
 	  }
 	
 	public static void exec(int i) throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("Resources/temp/" + (i+1) + ".txt"));
-        FileOutputStream fos = new FileOutputStream("Resources/temp/" + (i+1) + "_clean.txt");
+		BufferedReader br = new BufferedReader(new FileReader("resources/temp/" + (i+1) + ".txt"));
+        FileOutputStream fos = new FileOutputStream("resources/temp/" + (i+1) + "_clean.txt");
         String line;
         String input = "";
         int lineNumber = 1;
@@ -46,8 +46,8 @@ public class Transformer_PP {
 	        		String[] s0 = line.split("<i");
 	        		String[] s1 = line.split(">");
 	        		String[] s2 = s1[1].split("</");
-	        		input += s0[0] + "<id>" + s2[0] + "</id>";
-	        		System.err.println(s0[0] + "<id>" + s2[0] + "</id>");
+	        		input += s0[0] + "<id>" + s2[0] + "</id>" + '\n';
+//	        		System.err.println(s0[0] + "<id>" + s2[0] + "</id>");
 	        	} else if (line.matches(".*<description>.+</literal>.*")) {
 	        		String[] s0 = line.split("<d");
 	        		String[] s1 = line.split(">");

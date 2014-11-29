@@ -1,4 +1,4 @@
-package Extraction;
+package wdi.extraction;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -43,7 +43,7 @@ public class Extractor_PP {
 
 	private static void query(String id, int j) throws IOException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    	String fileName = "Resources/" + j + "_out.txt";
+    	String fileName = "resources/" + j + "_out.txt";
     	FileWriter fw = new FileWriter(fileName, true);
 		
 		String queryString = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
@@ -108,7 +108,7 @@ public class Extractor_PP {
 	private static ArrayList<String> getIds(int i) {
 		ArrayList<String> ids = new ArrayList<String>();
 		try {
-			FileReader fr = new FileReader("Resources/" + i + ".txt");
+			FileReader fr = new FileReader("resources/" + i + ".txt");
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			

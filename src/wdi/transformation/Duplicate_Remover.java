@@ -1,4 +1,4 @@
-package Transformation;
+package wdi.transformation;
 
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
@@ -15,7 +15,7 @@ public class Duplicate_Remover {
 	}
 
 	private static ArrayList<VideoGame> readFile() throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("Resources/temp/dbpedia.txt"));
+		BufferedReader br = new BufferedReader(new FileReader("resources/temp/dbpedia.txt"));
 		String line;
 		String input = "";
 		VideoGame vg = null;
